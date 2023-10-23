@@ -1,0 +1,12 @@
+# Define the goal
+float64 goal_position_x
+float64 max_velocity
+float64 acceleration
+float64 deceleration
+
+# Define the result
+bool success
+string message
+
+# Define a feedback message
+float64 current_position
