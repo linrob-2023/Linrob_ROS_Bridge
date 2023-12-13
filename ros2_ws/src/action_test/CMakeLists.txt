@@ -28,5 +28,8 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/MoveCommand.action"
   "action/MoveFeedback.action"
+  "srv/Jog.srv"
+  "srv/Stop.srv"
+
 )
 ament_package()
