@@ -30,6 +30,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "action/MoveFeedback.action"
   "srv/Jog.srv"
   "srv/Stop.srv"
+  "msg/Feedback.msg"
 
 )
 ament_package()
