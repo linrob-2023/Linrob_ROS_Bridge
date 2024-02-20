@@ -91,45 +91,12 @@ class MoveFeedbackActionServer(Node):
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 sock.connect(("172.31.176.1", 50000))  # Replace with actual address and port
                 sock.sendall(message)
+                receive_bytes = sock.recv(1000)
+                receive_data = json.loads(receive_bytes)
         except Exception as e:
             self.get_logger().error(f'Failed to send command to IPC: {e}')
             goal_handle.abort()
             return MoveFeedback.Result(success=False, message=str(e))
-
-    def listen_for_feedback(self, goal_handle):
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-                sock.connect(("172.31.176.1", 60000))  # Replace with actual address and port
-                while True:
-                    data = sock.recv(8192)
-                    if data:
-                        status_data = json.loads(data.decode())
-                        feedback = MoveFeedback.Feedback()
-                        feedback.axis_name = str(status_data["Axis_Name"])
-                        feedback.status = str(status_data["status"])
-                        feedback.state = str(status_data["state"])
-
-                        # Handle hexadecimal error_id conversion
-                        hex_error_id = status_data["error_id"]
-                        if hex_error_id.startswith("0x"):
-                            feedback.error_id = int(hex_error_id, 16)
-                        else:
-                            self.get_logger().error(f"Error ID is not in hexadecimal format: {hex_error_id}")
-                            continue  # Skip to the next loop iteration
-
-                        feedback.timestamp = str(status_data["timestamp"])
-                        feedback.position_reached = bool(status_data["position_reached"])
-                        
-                        goal_handle.publish_feedback(feedback)
-                        if feedback.position_reached:
-                        	goal_handle.succeed()
-                            #sock.close()
-                        	return  # Exit the loop once the goal is succeeded
-                        time.sleep(0.1)
-                    else:
-                        break
-        except Exception as e:
-            self.get_logger().error(f'Failed to receive feedback from IPC: {e}')
 
 class JogService(Node):
     def __init__(self):
@@ -202,7 +169,7 @@ class FeedbackPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    ipc_data_manager = IpcDataManager("172.31.176.1", 60000)
+    ipc_data_manager = IpcDataManager("172.31.176.1", 60001)
     ipc_data_manager.start_listening()
 
     move_feedback_action_server = MoveFeedbackActionServer(ipc_data_manager)
