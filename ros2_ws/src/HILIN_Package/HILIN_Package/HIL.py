@@ -47,7 +47,7 @@ class MoveFeedbackActionServer(Node):
         self.ipc_data_manager = ipc_data_manager
 
     def execute_callback(self, goal_handle):
-        self.get_logger().info('Executing move command action goal...')
+        self.get_logger().info(f"Executing move command: {goal_handle.request.command_type}")
         self.send_command_to_ipc(goal_handle)
         
         while not goal_handle.is_cancel_requested:
@@ -79,7 +79,7 @@ class MoveFeedbackActionServer(Node):
 
     def send_command_to_ipc(self, goal_handle):
         command = {
-            "cmd": "move",
+            "cmd": goal_handle.request.command_type,
             "position": goal_handle.request.position,
             "velocity": goal_handle.request.velocity,
             "acceleration": goal_handle.request.acceleration,
