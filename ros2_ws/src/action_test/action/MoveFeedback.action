@@ -1,4 +1,5 @@
 # MoveFeedback.action
+string  command_type
 float64 position
 float64 velocity
 float64 acceleration
