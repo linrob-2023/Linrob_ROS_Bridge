@@ -7,13 +7,14 @@ import threading
 import time
 
 from action_test.action import MoveFeedback
-from action_test.srv import Jog, Stop
+from action_test.srv import Home, Init, Jog, MoveHome, Pause, Reset, Resume, SetHome, Stop, Zero
 from action_test.msg import Feedback 
 
 class IpcDataManager:
-    def __init__(self, ipc_address, ipc_port):
+    def __init__(self, ipc_address, ipc_port,control_port):
         self.ipc_address = ipc_address
         self.ipc_port = ipc_port
+        self.control_port = control_port
         self.latest_feedback = None
         self.lock = threading.Lock()
 
@@ -97,54 +98,111 @@ class MoveFeedbackActionServer(Node):
             self.get_logger().error(f'Failed to send command to IPC: {e}')
             goal_handle.abort()
             return MoveFeedback.Result(success=False, message=str(e))
+class BaseService(Node):
+    def __init__(self, service_type, service_name, ipc_data_manager):
+        super().__init__(service_name)
+        self.service = self.create_service(service_type, service_name, self.callback)
+        self.ipc_data_manager = ipc_data_manager
 
-class JogService(Node):
-    def __init__(self):
-        super().__init__('jog_service')
-        self.service = self.create_service(Jog, 'jog_robot', self.jog_robot_callback)
+    def callback(self, request, response):
+        # This method is to be overridden in derived classes
+        pass
 
-    def jog_robot_callback(self, request, response):
-        # Implement the jog command logic here
+    def send_command_to_ipc(self, command):
+        message = json.dumps(command).encode() + b"\n"
         try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            server_address = ("172.31.176.1", 50000)
-            sock.connect(server_address)
-            command = {"cmd": "jog", "velocity": str(request.speed), "servo_name": 1, "axis": 1, "direction": request.direction}
-            message = json.dumps(command).encode() + b"\n"
-            sock.sendall(message)
-            response_bytes = sock.recv(1000)
-            response_data = json.loads(response_bytes)
-            response.success = True
-            response.message = "Jogging command executed."
-            sock.close()
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                sock.connect((self.ipc_data_manager.ipc_address, self.ipc_data_manager.control_port))
+                sock.sendall(message)
+                receive_bytes = sock.recv(1024)
+                receive_data = json.loads(receive_bytes.decode())
+                success = receive_data.get("reply_code") == "OK"
+                message = "Command executed successfully." if success else "Failed to execute command."
+                return success, message
         except Exception as e:
-            response.success = False
-            response.message = f"Failed to send command to IPC: {e}"
+            self.get_logger().error(f'Failed to send command to IPC: {e}')
+            return False, str(e)
+class InitService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Init, 'init_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "init"}
+        response.success, response.message = self.send_command_to_ipc(command)
         return response
 
-class StopService(Node):
-    def __init__(self):
-        super().__init__('stop_service')
-        self.service = self.create_service(Stop, 'stop_robot', self.stop_robot_callback)
+class JogService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Jog, 'jog_robot', ipc_data_manager)
 
-    def stop_robot_callback(self, request, response):
-        # Implement the stop command logic here
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            server_address = ("172.31.176.1", 50000)
-            sock.connect(server_address)
-            command = {"cmd": "stop", "servo_name": 1, "axis": 1}
-            message = json.dumps(command).encode() + b"\n"
-            sock.sendall(message)
-            response_bytes = sock.recv(1000)
-            response_data = json.loads(response_bytes)
-            response.success = True
-            response.message = "Stop command executed."
-            sock.close()
-        except Exception as e:
-            response.success = False
-            response.message = f"Failed to send command to IPC: {e}"
+    def callback(self, request, response):
+        command = {"cmd": "jog", "velocity": request.velocity, "direction": request.direction}
+        response.success, response.message = self.send_command_to_ipc(command)
         return response
+
+class MoveHomeService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(MoveHome, 'move_home_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "move_home"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class PauseService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Pause, 'pause_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "pause"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class ResetService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Reset, 'reset_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "reset"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class ResumeService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Resume, 'resume_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "resume"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class SetHomeService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(SetHome, 'set_home_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "set_home", "position": request.position}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class StopService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Stop, 'stop_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "stop"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+class ZeroService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Zero, 'zero_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "zero", "position": request.position}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
 
 class FeedbackPublisher(Node):
     def __init__(self, ipc_data_manager):
@@ -169,18 +227,36 @@ class FeedbackPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    ipc_data_manager = IpcDataManager("172.31.176.1", 60001)
+    ipc_data_manager = IpcDataManager("172.31.176.1", 60001,50000)
     ipc_data_manager.start_listening()
 
     move_feedback_action_server = MoveFeedbackActionServer(ipc_data_manager)
-    jog_service = JogService()
-    stop_service = StopService()
+    # Initialize all services with the ipc_data_manager
+    home_service = HomeService(ipc_data_manager)
+    init_service = InitService(ipc_data_manager)
+    jog_service = JogService(ipc_data_manager)
+    move_home_service = MoveHomeService(ipc_data_manager)
+    pause_service = PauseService(ipc_data_manager)
+    reset_service = ResetService(ipc_data_manager)
+    resume_service = ResumeService(ipc_data_manager)
+    set_home_service = SetHomeService(ipc_data_manager)
+    stop_service = StopService(ipc_data_manager)
+    zero_service = ZeroService(ipc_data_manager)
+
     feedback_publisher = FeedbackPublisher(ipc_data_manager)
 
     executor = rclpy.executors.MultiThreadedExecutor()
     executor.add_node(move_feedback_action_server)
+    executor.add_node(home_service)
+    executor.add_node(init_service)
     executor.add_node(jog_service)
+    executor.add_node(move_home_service)
+    executor.add_node(pause_service)
+    executor.add_node(reset_service)
+    executor.add_node(resume_service)
+    executor.add_node(set_home_service)
     executor.add_node(stop_service)
+    executor.add_node(zero_service)
     executor.add_node(feedback_publisher)
 
     try:

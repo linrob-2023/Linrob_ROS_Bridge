@@ -1,5 +1,7 @@
-# Request (empty)
+# Request
+float32 acceleration  # Optional: Specify if you want a custom acceleration for stopping
+float32 deceleration  # Optional: Specify if you want a custom deceleration for stopping
 ---
 # Response
-bool success
-string message
+bool success  # Indicates if the stop command was successfully executed
+string message  # Provides additional information or an error message
