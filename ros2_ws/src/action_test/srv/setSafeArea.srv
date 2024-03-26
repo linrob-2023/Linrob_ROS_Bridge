@@ -1,0 +1,8 @@
+# Request parameters
+float64 safe_area_low
+float64 safe_area_high
+int64 safe_area_do_high
+---
+# Response
+bool success
+string message

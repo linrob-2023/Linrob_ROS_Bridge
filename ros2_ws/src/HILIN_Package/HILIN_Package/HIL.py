@@ -7,7 +7,7 @@ import threading
 import time
 
 from action_test.action import MoveFeedback
-from action_test.srv import Home, Init, Jog, MoveHome, Pause, Reset, Resume, SetHome, Stop, Zero
+from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea
 from action_test.msg import Feedback 
 
 class IpcDataManager:
@@ -131,30 +131,22 @@ class InitService(BaseService):
         response.success, response.message = self.send_command_to_ipc(command)
         return response
 
+class PowerService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Power, 'Power_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "power", "activate": request.activate}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+
 class JogService(BaseService):
     def __init__(self, ipc_data_manager):
         super().__init__(Jog, 'jog_robot', ipc_data_manager)
 
     def callback(self, request, response):
         command = {"cmd": "jog", "velocity": request.velocity, "direction": request.direction}
-        response.success, response.message = self.send_command_to_ipc(command)
-        return response
-
-class MoveHomeService(BaseService):
-    def __init__(self, ipc_data_manager):
-        super().__init__(MoveHome, 'move_home_robot', ipc_data_manager)
-
-    def callback(self, request, response):
-        command = {"cmd": "move_home"}
-        response.success, response.message = self.send_command_to_ipc(command)
-        return response
-
-class PauseService(BaseService):
-    def __init__(self, ipc_data_manager):
-        super().__init__(Pause, 'pause_robot', ipc_data_manager)
-
-    def callback(self, request, response):
-        command = {"cmd": "pause"}
         response.success, response.message = self.send_command_to_ipc(command)
         return response
 
@@ -167,30 +159,21 @@ class ResetService(BaseService):
         response.success, response.message = self.send_command_to_ipc(command)
         return response
 
-class ResumeService(BaseService):
-    def __init__(self, ipc_data_manager):
-        super().__init__(Resume, 'resume_robot', ipc_data_manager)
-
-    def callback(self, request, response):
-        command = {"cmd": "resume"}
-        response.success, response.message = self.send_command_to_ipc(command)
-        return response
-
-class SetHomeService(BaseService):
-    def __init__(self, ipc_data_manager):
-        super().__init__(SetHome, 'set_home_robot', ipc_data_manager)
-
-    def callback(self, request, response):
-        command = {"cmd": "set_home", "position": request.position}
-        response.success, response.message = self.send_command_to_ipc(command)
-        return response
 
 class StopService(BaseService):
     def __init__(self, ipc_data_manager):
         super().__init__(Stop, 'stop_robot', ipc_data_manager)
 
     def callback(self, request, response):
-        command = {"cmd": "stop"}
+        command = {"cmd": "stop","deceleration": request.activate}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+class HomeService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(Home, 'home_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "home"}
         response.success, response.message = self.send_command_to_ipc(command)
         return response
 
@@ -202,6 +185,24 @@ class ZeroService(BaseService):
         command = {"cmd": "zero", "position": request.position}
         response.success, response.message = self.send_command_to_ipc(command)
         return response
+class AcknowledgeErrorService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(AcknowledgeError, 'AcknowledgeError_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "ackError"}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+class setSafeAreaService(BaseService):
+    def __init__(self, ipc_data_manager):
+        super().__init__(setSafeArea, 'setSafeArea_robot', ipc_data_manager)
+
+    def callback(self, request, response):
+        command = {"cmd": "setSafeArea", "safe_area_low": request.safe_area_low, "safe_area_high": request.safe_area_do_high,"safe_area_do_high": request.safe_area_do_high}
+        response.success, response.message = self.send_command_to_ipc(command)
+        return response
+
+
 
 
 class FeedbackPublisher(Node):
@@ -232,40 +233,32 @@ def main(args=None):
 
     move_feedback_action_server = MoveFeedbackActionServer(ipc_data_manager)
     # Initialize all services with the ipc_data_manager
-    home_service = HomeService(ipc_data_manager)
-    init_service = InitService(ipc_data_manager)
-    jog_service = JogService(ipc_data_manager)
-    move_home_service = MoveHomeService(ipc_data_manager)
-    pause_service = PauseService(ipc_data_manager)
-    reset_service = ResetService(ipc_data_manager)
-    resume_service = ResumeService(ipc_data_manager)
-    set_home_service = SetHomeService(ipc_data_manager)
-    stop_service = StopService(ipc_data_manager)
-    zero_service = ZeroService(ipc_data_manager)
+    services = [
+        InitService(ipc_data_manager),
+        PowerService(ipc_data_manager),
+        JogService(ipc_data_manager),
+        ResetService(ipc_data_manager),
+        StopService(ipc_data_manager),
+        HomeService(ipc_data_manager),
+        ZeroService(ipc_data_manager),
+        AcknowledgeErrorService(ipc_data_manager),
+        SetSafeAreaService(ipc_data_manager)
+    ]
 
     feedback_publisher = FeedbackPublisher(ipc_data_manager)
-
+    
     executor = rclpy.executors.MultiThreadedExecutor()
-    executor.add_node(move_feedback_action_server)
-    executor.add_node(home_service)
-    executor.add_node(init_service)
-    executor.add_node(jog_service)
-    executor.add_node(move_home_service)
-    executor.add_node(pause_service)
-    executor.add_node(reset_service)
-    executor.add_node(resume_service)
-    executor.add_node(set_home_service)
-    executor.add_node(stop_service)
-    executor.add_node(zero_service)
-    executor.add_node(feedback_publisher)
+    for service in services:
+        executor.add_node(service)
 
     try:
         executor.spin()
     finally:
         executor.shutdown()
         move_feedback_action_server.destroy_node()
-        jog_service.destroy_node()
-        stop_service.destroy_node()
+        feedback_publisher.destroy_node()
+        for service in services:
+            service.destroy_node()
         feedback_publisher.destroy_node()
         rclpy.shutdown()
 

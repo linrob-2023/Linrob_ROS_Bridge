@@ -1,5 +1,4 @@
 # Request
-float32 acceleration  # Optional: Specify if you want a custom acceleration for stopping
 float32 deceleration  # Optional: Specify if you want a custom deceleration for stopping
 ---
 # Response

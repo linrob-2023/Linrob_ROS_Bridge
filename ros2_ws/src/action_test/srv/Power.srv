@@ -1,4 +1,5 @@
-# Request
+# Request parameters
+int64 activate
 ---
 # Response
 bool success
