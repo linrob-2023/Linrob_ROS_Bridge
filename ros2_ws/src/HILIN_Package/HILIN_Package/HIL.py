@@ -1,3 +1,18 @@
+#!/usr/bin/env python3
+"""
+Hardware Interface Layer (HIL) for ROS 2 
+
+This code provides a ROS 2 node that interfaces with various hardware components
+via defined services, ensuring operations conform to the specified API version.
+
+Conforms to API version: 2.2.0
+
+Author: Selim Ouirari
+Email: selim.ouirari@linrob.io   
+Last Modified: 26-03-2024  
+
+"""
+
 import rclpy
 from rclpy.action import ActionServer
 from rclpy.node import Node
