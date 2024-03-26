@@ -74,9 +74,13 @@ class MoveFeedbackActionServer(Node):
                 action_feedback.axis_name = str(feedback_data["Axis_Name"])
                 action_feedback.status = str(feedback_data["status"])
                 action_feedback.state = str(feedback_data["state"])
-                action_feedback.error_id = int(feedback_data["error_id"], 16) if feedback_data["error_id"].startswith("0x") else -1
+                action_feedback.error_id_l1 = str(feedback_data["error_id_l1"])
+                action_feedback.error_id_l2 = str(feedback_data["error_id_l2"])
+                action_feedback.error_id_l3 = str(feedback_data["error_id_l3"])
                 action_feedback.timestamp = str(feedback_data["timestamp"])
                 action_feedback.position_reached = bool(feedback_data["position_reached"])
+                action_feedback.position_reached = bool(feedback_data["axis_referenced"])
+
                 goal_handle.publish_feedback(action_feedback)
 
             # Check if the goal is achieved and set the result
@@ -234,9 +238,12 @@ class FeedbackPublisher(Node):
             feedback_msg.axis_name = str(feedback_data["Axis_Name"])
             feedback_msg.status = str(feedback_data["status"])
             feedback_msg.state = str(feedback_data["state"])
-            feedback_msg.error_id = int(feedback_data["error_id"], 16) if feedback_data["error_id"].startswith("0x") else -1
+            feedback_msg.error_id_l1 = str(feedback_data["error_id_l1"])
+            feedback_msg.error_id_l2 = str(feedback_data["error_id_l2"])
+            feedback_msg.error_id_l3 = str(feedback_data["error_id_l3"])
             feedback_msg.timestamp = str(feedback_data["timestamp"])
             feedback_msg.position_reached = bool(feedback_data["position_reached"])
+            feedback_msg.position_reached = bool(feedback_data["axis_referenced"])
             self.publisher_.publish(feedback_msg)
 
 
