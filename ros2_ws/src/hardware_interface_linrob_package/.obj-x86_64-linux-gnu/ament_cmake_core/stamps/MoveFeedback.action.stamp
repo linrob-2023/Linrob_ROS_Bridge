@@ -1,0 +1,21 @@
+# MoveFeedback.action
+string  command_type
+float64 position
+float64 velocity
+float64 acceleration
+float64 deceleration
+---
+bool success
+string message
+---
+# Feedback definition
+string axis_name
+string status
+string state
+string error_id_l1
+string error_id_l2
+string error_id_l3
+string timestamp
+bool position_reached
+bool axis_referenced
+

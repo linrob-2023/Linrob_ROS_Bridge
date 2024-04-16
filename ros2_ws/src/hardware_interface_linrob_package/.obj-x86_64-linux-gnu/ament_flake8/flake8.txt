@@ -1,0 +1,217 @@
+-- run_test.py: invoking following command in '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package':
+ - /opt/ros/humble/bin/ament_flake8 --xunit-file /home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/flake8.xunit.xml
+
+def generate_launch_description():
+^
+"""
+Hardware Interface Layer (HIL) for ROS 2 
+
+This code provides a ROS 2 node that interfaces with various hardware components
+via defined services, ensuring operations conform to the specified API version.
+
+Conforms to API version: 2.2.0
+
+Author: Selim Ouirari
+Email: selim.ouirari@linrob.io   
+Last Modified: 26-03-2024  
+
+"""
+   
+                                    ^
+"""
+Hardware Interface Layer (HIL) for ROS 2 
+
+This code provides a ROS 2 node that interfaces with various hardware components
+via defined services, ensuring operations conform to the specified API version.
+
+Conforms to API version: 2.2.0
+
+Author: Selim Ouirari
+Email: selim.ouirari@linrob.io   
+Last Modified: 26-03-2024  
+
+"""
+   
+                          ^
+"""
+Hardware Interface Layer (HIL) for ROS 2 
+
+This code provides a ROS 2 node that interfaces with various hardware components
+via defined services, ensuring operations conform to the specified API version.
+
+Conforms to API version: 2.2.0
+
+Author: Selim Ouirari
+Email: selim.ouirari@linrob.io   
+Last Modified: 26-03-2024  
+
+"""
+   
+                     ^
+from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea
+                                      ^
+from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea
+                                          ^
+from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea
+                                                            ^
+from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea
+                                                                                    ^
+from action_test.msg import Feedback 
+                                    ^
+class IpcDataManager:
+^
+    def __init__(self, ipc_address, ipc_port,control_port):
+                                            ^
+        
+^
+class MoveFeedbackActionServer(Node):
+^
+        
+^
+                    return MoveFeedback.Result(success=True, message="Move completed successfully.")
+                                                                                                   ^
+            time.sleep(0.1)  
+                           ^
+                receive_data = json.loads(receive_bytes)
+                ^
+class BaseService(Node):
+^
+                sock.connect((self.ipc_data_manager.ipc_address, self.ipc_data_manager.control_port))
+                                                                                                   ^
+                message = "Command executed successfully." if success else "Failed to execute command."
+                                                                                                   ^
+class InitService(BaseService):
+^
+class PowerService(BaseService):
+^
+class ResetService(BaseService):
+^
+        command = {"cmd": "stop","deceleration": request.activate}
+                                ^
+class HomeService(BaseService):
+^
+class ZeroService(BaseService):
+^
+class AcknowledgeErrorService(BaseService):
+^
+class setSafeAreaService(BaseService):
+^
+        command = {"cmd": "setSafeArea", "safe_area_low": request.safe_area_low, "safe_area_high": request.safe_area_do_high,"safe_area_do_high": request.safe_area_do_high}
+                                                                                                   ^
+        command = {"cmd": "setSafeArea", "safe_area_low": request.safe_area_low, "safe_area_high": request.safe_area_do_high,"safe_area_do_high": request.safe_area_do_high}
+                                                                                                                            ^
+class FeedbackPublisher(Node):
+^
+    ipc_data_manager = IpcDataManager("172.31.176.1", 60001,50000)
+                                                           ^
+        SetSafeAreaService(ipc_data_manager)
+        ^
+    
+^
+if __name__ == '__main__':
+^
+    main()          ^
+8     E231 missing whitespace after ','
+11    E302 expected 2 blank lines, found 1
+1     E303 too many blank lines (4)
+1     E305 expected 2 blank lines after class or function definition, found 1
+4     E501 line too long (100 > 99 characters)
+1     F821 undefined name 'SetSafeAreaService'
+1     F841 local variable 'receive_data' is assigned to but never used
+5     W291 trailing whitespace
+1     W292 no newline at end of file
+3     W293 blank line contains whitespace
+
+./launch/hil_launch.py:4:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:3:41: W291 trailing whitespace
+
+./hardware_interface_linrob_package/HIL.py:11:31: W291 trailing whitespace
+
+./hardware_interface_linrob_package/HIL.py:12:26: W291 trailing whitespace
+
+./hardware_interface_linrob_package/HIL.py:25:39: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:25:43: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:25:61: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:25:85: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:26:37: W291 trailing whitespace
+
+./hardware_interface_linrob_package/HIL.py:28:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:29:45: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:54:1: W293 blank line contains whitespace
+
+./hardware_interface_linrob_package/HIL.py:55:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:68:1: W293 blank line contains whitespace
+
+./hardware_interface_linrob_package/HIL.py:89:100: E501 line too long (100 > 99 characters)
+
+./hardware_interface_linrob_package/HIL.py:91:28: W291 trailing whitespace
+
+./hardware_interface_linrob_package/HIL.py:115:17: F841 local variable 'receive_data' is assigned to but never used
+
+./hardware_interface_linrob_package/HIL.py:120:1: E302 expected 2 blank lines, found 0
+
+./hardware_interface_linrob_package/HIL.py:134:100: E501 line too long (101 > 99 characters)
+
+./hardware_interface_linrob_package/HIL.py:139:100: E501 line too long (103 > 99 characters)
+
+./hardware_interface_linrob_package/HIL.py:144:1: E302 expected 2 blank lines, found 0
+
+./hardware_interface_linrob_package/HIL.py:153:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:172:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:187:33: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:190:1: E302 expected 2 blank lines, found 0
+
+./hardware_interface_linrob_package/HIL.py:199:1: E302 expected 2 blank lines, found 1
+
+./hardware_interface_linrob_package/HIL.py:207:1: E302 expected 2 blank lines, found 0
+
+./hardware_interface_linrob_package/HIL.py:215:1: E302 expected 2 blank lines, found 0
+
+./hardware_interface_linrob_package/HIL.py:220:100: E501 line too long (172 > 99 characters)
+
+./hardware_interface_linrob_package/HIL.py:220:125: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:227:1: E303 too many blank lines (4)
+
+./hardware_interface_linrob_package/HIL.py:253:60: E231 missing whitespace after ','
+
+./hardware_interface_linrob_package/HIL.py:267:9: F821 undefined name 'SetSafeAreaService'
+
+./hardware_interface_linrob_package/HIL.py:271:1: W293 blank line contains whitespace
+
+./hardware_interface_linrob_package/HIL.py:287:1: E305 expected 2 blank lines after class or function definition, found 1
+
+./hardware_interface_linrob_package/HIL.py:288:11: W292 no newline at end of file
+
+
+7 files checked
+36 errors
+
+'E'-type errors: 25
+'F'-type errors: 2
+'W'-type errors: 9
+
+Checked files:
+
+* ./setup.py
+* ./launch/hil_launch.py
+* ./test/test_flake8.py
+* ./test/test_pep257.py
+* ./test/test_copyright.py
+* ./hardware_interface_linrob_package/HIL.py
+* ./hardware_interface_linrob_package/__init__.py
+
+
+-- run_test.py: return code 1
+-- run_test.py: verify result file '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/flake8.xunit.xml'

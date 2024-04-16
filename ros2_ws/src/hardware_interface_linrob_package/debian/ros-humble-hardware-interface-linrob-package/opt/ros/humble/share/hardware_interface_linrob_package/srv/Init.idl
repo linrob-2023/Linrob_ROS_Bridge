@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hardware_interface_linrob_package/srv/Init.srv
+// generated code does not contain a copyright notice
+
+
+module hardware_interface_linrob_package {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct Init_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct Init_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

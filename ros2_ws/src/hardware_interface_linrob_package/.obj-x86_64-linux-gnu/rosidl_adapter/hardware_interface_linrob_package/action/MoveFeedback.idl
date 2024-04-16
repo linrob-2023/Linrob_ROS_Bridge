@@ -1,0 +1,48 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from hardware_interface_linrob_package/action/MoveFeedback.action
+// generated code does not contain a copyright notice
+
+
+module hardware_interface_linrob_package {
+  module action {
+    @verbatim (language="comment", text=
+      "MoveFeedback.action")
+    struct MoveFeedback_Goal {
+      string command_type;
+
+      double position;
+
+      double velocity;
+
+      double acceleration;
+
+      double deceleration;
+    };
+    struct MoveFeedback_Result {
+      boolean success;
+
+      string message;
+    };
+    @verbatim (language="comment", text=
+      "Feedback definition")
+    struct MoveFeedback_Feedback {
+      string axis_name;
+
+      string status;
+
+      string state;
+
+      string error_id_l1;
+
+      string error_id_l2;
+
+      string error_id_l3;
+
+      string timestamp;
+
+      boolean position_reached;
+
+      boolean axis_referenced;
+    };
+  };
+};

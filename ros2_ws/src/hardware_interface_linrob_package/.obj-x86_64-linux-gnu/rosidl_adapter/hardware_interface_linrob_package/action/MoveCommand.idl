@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from hardware_interface_linrob_package/action/MoveCommand.action
+// generated code does not contain a copyright notice
+
+
+module hardware_interface_linrob_package {
+  module action {
+    @verbatim (language="comment", text=
+      "MoveCommand.action")
+    struct MoveCommand_Goal {
+      double position;
+
+      double velocity;
+
+      double acceleration;
+
+      double deceleration;
+    };
+    struct MoveCommand_Result {
+      boolean success;
+
+      string message;
+    };
+    @verbatim (language="comment", text=
+      "Feedback definition")
+    struct MoveCommand_Feedback {
+      double current_position;
+    };
+  };
+};

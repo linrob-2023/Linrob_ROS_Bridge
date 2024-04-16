@@ -1,0 +1,4 @@
+source;share/hardware_interface_linrob_package/environment/ament_prefix_path.sh
+source;share/hardware_interface_linrob_package/environment/library_path.sh
+source;share/hardware_interface_linrob_package/environment/path.sh
+source;share/hardware_interface_linrob_package/environment/pythonpath.sh

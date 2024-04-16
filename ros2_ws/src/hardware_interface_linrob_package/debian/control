@@ -1,0 +1,12 @@
+Source: ros-humble-hardware-interface-linrob-package
+Section: misc
+Priority: optional
+Maintainer: Your Name <selim.ouirari@linrob.io>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-humble-action-msgs, ros-humble-ament-cmake, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-builtin-interfaces, ros-humble-launch, ros-humble-launch-ros, ros-humble-rclcpp, ros-humble-rclcpp-action, ros-humble-rclpy, ros-humble-rosidl-default-generators, ros-humble-rosidl-default-runtime, ros-humble-std-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-hardware-interface-linrob-package
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-action-msgs, ros-humble-builtin-interfaces, ros-humble-launch, ros-humble-launch-ros, ros-humble-rclcpp, ros-humble-rclcpp-action, ros-humble-rclpy, ros-humble-rosidl-default-runtime, ros-humble-std-msgs
+Description: A comprehensive package for HILIN project with C++ and Python nodes

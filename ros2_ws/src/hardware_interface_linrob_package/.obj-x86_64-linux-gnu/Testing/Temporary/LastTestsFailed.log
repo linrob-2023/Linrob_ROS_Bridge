@@ -1,0 +1,4 @@
+1:cppcheck
+2:flake8
+4:pep257
+5:uncrustify

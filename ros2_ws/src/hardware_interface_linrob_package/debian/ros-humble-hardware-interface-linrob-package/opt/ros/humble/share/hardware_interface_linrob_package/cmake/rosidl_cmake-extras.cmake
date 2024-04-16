@@ -1,0 +1,4 @@
+# generated from rosidl_cmake/cmake/rosidl_cmake-extras.cmake.in
+
+set(hardware_interface_linrob_package_IDL_FILES "action/MoveCommand.idl;action/MoveFeedback.idl;srv/Home.idl;srv/Init.idl;srv/Jog.idl;srv/Reset.idl;srv/Stop.idl;srv/Zero.idl;srv/Power.idl;srv/AcknowledgeError.idl;msg/Feedback.idl")
+set(hardware_interface_linrob_package_INTERFACE_FILES "action/MoveCommand.action;action/MoveFeedback.action;srv/Home.srv;srv/Home_Request.msg;srv/Home_Response.msg;srv/Init.srv;srv/Init_Request.msg;srv/Init_Response.msg;srv/Jog.srv;srv/Jog_Request.msg;srv/Jog_Response.msg;srv/Reset.srv;srv/Reset_Request.msg;srv/Reset_Response.msg;srv/Stop.srv;srv/Stop_Request.msg;srv/Stop_Response.msg;srv/Zero.srv;srv/Zero_Request.msg;srv/Zero_Response.msg;srv/Power.srv;srv/Power_Request.msg;srv/Power_Response.msg;srv/AcknowledgeError.srv;srv/AcknowledgeError_Request.msg;srv/AcknowledgeError_Response.msg;msg/Feedback.msg")

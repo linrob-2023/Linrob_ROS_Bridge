@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="hardware_interface_linrob_package.xmllint"
+  tests="1"
+  errors="0"
+  failures="0"
+  time="0.016"
+>
+  <testcase
+    name="package.xml"
+    classname="hardware_interface_linrob_package.xmllint"/>
+  <system-out>Checked files:
+* package.xml</system-out>
+</testsuite>

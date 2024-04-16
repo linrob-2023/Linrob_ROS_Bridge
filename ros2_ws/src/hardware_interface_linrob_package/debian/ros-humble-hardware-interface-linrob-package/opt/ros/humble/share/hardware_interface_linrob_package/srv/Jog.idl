@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hardware_interface_linrob_package/srv/Jog.srv
+// generated code does not contain a copyright notice
+
+
+module hardware_interface_linrob_package {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request parameters")
+    struct Jog_Request {
+      double speed;
+
+      int64 direction;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct Jog_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

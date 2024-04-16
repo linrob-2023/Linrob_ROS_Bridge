@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="hardware_interface_linrob_package.flake8"
+  tests="36"
+  errors="0"
+  failures="36"
+  time="0.178"
+>
+  <testcase
+    name="E302 (./launch/hil_launch.py:4:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;def generate_launch_description():&#10;"/>
+  </testcase>
+  <testcase
+    name="W291 (./hardware_interface_linrob_package/HIL.py:3:41)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='trailing whitespace:&#10;"""&#10;Hardware Interface Layer (HIL) for ROS 2 &#10;&#10;This code provides a ROS 2 node that interfaces with various hardware components&#10;via defined services, ensuring operations conform to the specified API version.&#10;&#10;Conforms to API version: 2.2.0&#10;&#10;Author: Selim Ouirari&#10;Email: selim.ouirari@linrob.io   &#10;Last Modified: 26-03-2024  &#10;&#10;"""&#10;'/>
+  </testcase>
+  <testcase
+    name="W291 (./hardware_interface_linrob_package/HIL.py:11:31)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='trailing whitespace:&#10;"""&#10;Hardware Interface Layer (HIL) for ROS 2 &#10;&#10;This code provides a ROS 2 node that interfaces with various hardware components&#10;via defined services, ensuring operations conform to the specified API version.&#10;&#10;Conforms to API version: 2.2.0&#10;&#10;Author: Selim Ouirari&#10;Email: selim.ouirari@linrob.io   &#10;Last Modified: 26-03-2024  &#10;&#10;"""&#10;'/>
+  </testcase>
+  <testcase
+    name="W291 (./hardware_interface_linrob_package/HIL.py:12:26)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='trailing whitespace:&#10;"""&#10;Hardware Interface Layer (HIL) for ROS 2 &#10;&#10;This code provides a ROS 2 node that interfaces with various hardware components&#10;via defined services, ensuring operations conform to the specified API version.&#10;&#10;Conforms to API version: 2.2.0&#10;&#10;Author: Selim Ouirari&#10;Email: selim.ouirari@linrob.io   &#10;Last Modified: 26-03-2024  &#10;&#10;"""&#10;'/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:25:39)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:25:43)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:25:61)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:25:85)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;from action_test.srv import Home, Init,Jog,Reset, Stop, Zero,Power, AcknowledgeError,setSafeArea&#10;"/>
+  </testcase>
+  <testcase
+    name="W291 (./hardware_interface_linrob_package/HIL.py:26:37)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="trailing whitespace:&#10;from action_test.msg import Feedback &#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:28:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;class IpcDataManager:&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:29:45)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;    def __init__(self, ipc_address, ipc_port,control_port):&#10;"/>
+  </testcase>
+  <testcase
+    name="W293 (./hardware_interface_linrob_package/HIL.py:54:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="blank line contains whitespace:&#10;        &#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:55:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;class MoveFeedbackActionServer(Node):&#10;"/>
+  </testcase>
+  <testcase
+    name="W293 (./hardware_interface_linrob_package/HIL.py:68:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="blank line contains whitespace:&#10;        &#10;"/>
+  </testcase>
+  <testcase
+    name="E501 (./hardware_interface_linrob_package/HIL.py:89:100)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='line too long (100 &gt; 99 characters):&#10;                    return MoveFeedback.Result(success=True, message="Move completed successfully.")&#10;'/>
+  </testcase>
+  <testcase
+    name="W291 (./hardware_interface_linrob_package/HIL.py:91:28)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="trailing whitespace:&#10;            time.sleep(0.1)  &#10;"/>
+  </testcase>
+  <testcase
+    name="F841 (./hardware_interface_linrob_package/HIL.py:115:17)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="local variable 'receive_data' is assigned to but never used:&#10;                receive_data = json.loads(receive_bytes)&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:120:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 0:&#10;class BaseService(Node):&#10;"/>
+  </testcase>
+  <testcase
+    name="E501 (./hardware_interface_linrob_package/HIL.py:134:100)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="line too long (101 &gt; 99 characters):&#10;                sock.connect((self.ipc_data_manager.ipc_address, self.ipc_data_manager.control_port))&#10;"/>
+  </testcase>
+  <testcase
+    name="E501 (./hardware_interface_linrob_package/HIL.py:139:100)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='line too long (103 &gt; 99 characters):&#10;                message = "Command executed successfully." if success else "Failed to execute command."&#10;'/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:144:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 0:&#10;class InitService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:153:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;class PowerService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:172:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;class ResetService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:187:33)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;        command = {&quot;cmd&quot;: &quot;stop&quot;,&quot;deceleration&quot;: request.activate}&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:190:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 0:&#10;class HomeService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:199:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 1:&#10;class ZeroService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:207:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 0:&#10;class AcknowledgeErrorService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E302 (./hardware_interface_linrob_package/HIL.py:215:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines, found 0:&#10;class setSafeAreaService(BaseService):&#10;"/>
+  </testcase>
+  <testcase
+    name="E501 (./hardware_interface_linrob_package/HIL.py:220:100)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message='line too long (172 &gt; 99 characters):&#10;        command = {"cmd": "setSafeArea", "safe_area_low": request.safe_area_low, "safe_area_high": request.safe_area_do_high,"safe_area_do_high": request.safe_area_do_high}&#10;'/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:220:125)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;        command = {&quot;cmd&quot;: &quot;setSafeArea&quot;, &quot;safe_area_low&quot;: request.safe_area_low, &quot;safe_area_high&quot;: request.safe_area_do_high,&quot;safe_area_do_high&quot;: request.safe_area_do_high}&#10;"/>
+  </testcase>
+  <testcase
+    name="E303 (./hardware_interface_linrob_package/HIL.py:227:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="too many blank lines (4):&#10;class FeedbackPublisher(Node):&#10;"/>
+  </testcase>
+  <testcase
+    name="E231 (./hardware_interface_linrob_package/HIL.py:253:60)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="missing whitespace after ',':&#10;    ipc_data_manager = IpcDataManager(&quot;172.31.176.1&quot;, 60001,50000)&#10;"/>
+  </testcase>
+  <testcase
+    name="F821 (./hardware_interface_linrob_package/HIL.py:267:9)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="undefined name 'SetSafeAreaService':&#10;        SetSafeAreaService(ipc_data_manager)&#10;"/>
+  </testcase>
+  <testcase
+    name="W293 (./hardware_interface_linrob_package/HIL.py:271:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="blank line contains whitespace:&#10;    &#10;"/>
+  </testcase>
+  <testcase
+    name="E305 (./hardware_interface_linrob_package/HIL.py:287:1)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="expected 2 blank lines after class or function definition, found 1:&#10;if __name__ == '__main__':&#10;"/>
+  </testcase>
+  <testcase
+    name="W292 (./hardware_interface_linrob_package/HIL.py:288:11)"
+    classname="hardware_interface_linrob_package.flake8"
+  >
+      <failure message="no newline at end of file:&#10;    main()"/>
+  </testcase>
+  <system-out>Checked files:
+* ./setup.py
+* ./launch/hil_launch.py
+* ./test/test_flake8.py
+* ./test/test_pep257.py
+* ./test/test_copyright.py
+* ./hardware_interface_linrob_package/HIL.py
+* ./hardware_interface_linrob_package/__init__.py</system-out>
+</testsuite>

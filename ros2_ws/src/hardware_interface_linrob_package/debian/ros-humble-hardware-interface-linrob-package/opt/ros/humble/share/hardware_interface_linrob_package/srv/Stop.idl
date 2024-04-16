@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hardware_interface_linrob_package/srv/Stop.srv
+// generated code does not contain a copyright notice
+
+
+module hardware_interface_linrob_package {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct Stop_Request {
+      @verbatim (language="comment", text=
+        "Optional: Specify if you want a custom deceleration for stopping")
+      float deceleration;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct Stop_Response {
+      @verbatim (language="comment", text=
+        "Indicates if the stop command was successfully executed")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "Provides additional information or an error message")
+      string message;
+    };
+  };
+};

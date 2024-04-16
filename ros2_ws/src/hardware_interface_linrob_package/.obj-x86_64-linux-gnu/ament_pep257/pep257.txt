@@ -1,0 +1,17 @@
+-- run_test.py: invoking following command in '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package':
+ - /opt/ros/humble/bin/ament_pep257 --xunit-file /home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/pep257.xunit.xml
+
+checking ./hardware_interface_linrob_package/HIL.py
+./hardware_interface_linrob_package/HIL.py:2 at module level: D400: First line should end with a period (not ' ')
+./hardware_interface_linrob_package/HIL.py:2 at module level: D415: First line should end with a period, question mark, or exclamation point (not ' ')
+checking ./hardware_interface_linrob_package/__init__.py
+checking ./launch/hil_launch.py
+checking ./setup.py
+checking ./test/test_copyright.py
+checking ./test/test_flake8.py
+checking ./test/test_pep257.py
+2 errors
+
+
+-- run_test.py: return code 1
+-- run_test.py: verify result file '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/pep257.xunit.xml'

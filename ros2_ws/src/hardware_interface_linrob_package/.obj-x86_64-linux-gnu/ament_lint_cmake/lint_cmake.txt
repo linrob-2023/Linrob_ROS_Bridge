@@ -1,0 +1,9 @@
+-- run_test.py: invoking following command in '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package':
+ - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/lint_cmake.xunit.xml
+
+
+No problems found
+
+
+-- run_test.py: return code 0
+-- run_test.py: verify result file '/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package/.obj-x86_64-linux-gnu/test_results/hardware_interface_linrob_package/lint_cmake.xunit.xml'

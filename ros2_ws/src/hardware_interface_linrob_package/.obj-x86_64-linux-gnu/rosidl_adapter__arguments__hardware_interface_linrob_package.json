@@ -1,0 +1,16 @@
+{
+  "package_name": "hardware_interface_linrob_package",
+  "non_idl_tuples": [
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:action/MoveCommand.action",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:action/MoveFeedback.action",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Home.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Init.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Jog.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Reset.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Stop.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Zero.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/Power.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:srv/AcknowledgeError.srv",
+    "/home/selim/Linrob_ROS_Bridge/ros2_ws/src/hardware_interface_linrob_package:msg/Feedback.msg"
+  ]
+}

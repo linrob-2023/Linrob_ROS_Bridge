@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite
+  name="hardware_interface_linrob_package.pep257"
+  tests="8"
+  errors="0"
+  failures="2"
+  time="0.031"
+>
+  <testcase
+    name="D400 (./hardware_interface_linrob_package/HIL.py:2)"
+    classname="hardware_interface_linrob_package.pep257"
+  >
+      <failure message="D400: First line should end with a period (not ' ')"/>
+  </testcase>
+  <testcase
+    name="D415 (./hardware_interface_linrob_package/HIL.py:2)"
+    classname="hardware_interface_linrob_package.pep257"
+  >
+      <failure message="D415: First line should end with a period, question mark, or exclamation point (not ' ')"/>
+  </testcase>
+  <testcase
+    name="./hardware_interface_linrob_package/__init__.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <testcase
+    name="./launch/hil_launch.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <testcase
+    name="./setup.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <testcase
+    name="./test/test_copyright.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <testcase
+    name="./test/test_flake8.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <testcase
+    name="./test/test_pep257.py"
+    classname="hardware_interface_linrob_package.pep257"/>
+  <system-out>Checked files:
+* ./hardware_interface_linrob_package/HIL.py
+* ./hardware_interface_linrob_package/__init__.py
+* ./launch/hil_launch.py
+* ./setup.py
+* ./test/test_copyright.py
+* ./test/test_flake8.py
+* ./test/test_pep257.py</system-out>
+</testsuite>

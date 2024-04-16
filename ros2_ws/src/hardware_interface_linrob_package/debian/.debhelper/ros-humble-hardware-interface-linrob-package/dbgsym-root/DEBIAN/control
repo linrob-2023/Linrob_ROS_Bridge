@@ -1,0 +1,13 @@
+Package: ros-humble-hardware-interface-linrob-package-dbgsym
+Package-Type: ddeb
+Source: ros-humble-hardware-interface-linrob-package
+Version: 0.0.0-0jammy
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Your Name <selim.ouirari@linrob.io>
+Installed-Size: 1766
+Depends: ros-humble-hardware-interface-linrob-package (= 0.0.0-0jammy)
+Section: debug
+Priority: optional
+Description: debug symbols for ros-humble-hardware-interface-linrob-package
+Build-Ids: 0cde66a05cc75467c021c274756c43110b00f448 17b6bd42cc8c0ce6f763725ed7c2a5ad0fbef4f0 2a25f1ee100604af328720666e6d637889b886d5 3b2efc2c81027b627968dc81b4b04f8f3a24597e 6cce27b70db9ef8f752354b92d394d15b5ed4985 79afbd7fdc0f73d714485719098fb44756714e4a 81897479b9008f9d3777b958c3ef780193b7b47c 9dccfb235eb26edf80d0b0cc660c42c3b1303cf8 bdc49205190b586476fd5b262f25fb69fcb5df4f c03a14fe6293fffeb0f0cac0cd88229290e3be2e d0458412cbb10414e13e63be7d408b526474c951 ead0ebcc1208e6d41c87d78fb410151ab71173fc

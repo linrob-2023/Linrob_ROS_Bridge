@@ -1,0 +1,7 @@
+# Request parameters
+float64 speed
+int64 direction
+---
+# Response
+bool success
+string message
