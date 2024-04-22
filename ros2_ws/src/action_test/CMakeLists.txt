@@ -36,7 +36,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Zero.srv"
   "srv/Power.srv"
   "srv/AcknowledgeError.srv"
-  "srv/SetSafeArea.srv"
   "msg/Feedback.msg"
 
 )
