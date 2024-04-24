@@ -1,6 +1,8 @@
 # Request parameters
-float64 speed
-int64 direction
+float64  position
+float64  velocity
+float64  acceleration
+float64  deceleration
 ---
 # Response
 bool success

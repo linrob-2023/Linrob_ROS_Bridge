@@ -28,8 +28,14 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/MoveCommand.action"
   "action/MoveFeedback.action"
+  "srv/Home.srv"
+  "srv/Init.srv"
   "srv/Jog.srv"
+  "srv/Reset.srv"
   "srv/Stop.srv"
+  "srv/Zero.srv"
+  "srv/Power.srv"
+  "srv/AcknowledgeError.srv"
   "msg/Feedback.msg"
 
 )

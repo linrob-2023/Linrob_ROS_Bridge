@@ -2,6 +2,9 @@
 string axis_name
 string status
 string state
-int32 error_id
+string error_id_l1
+string error_id_l2
+string error_id_l3
 string timestamp
 bool position_reached
+bool axis_referenced

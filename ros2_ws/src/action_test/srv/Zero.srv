@@ -1,0 +1,6 @@
+# Request
+float32 position
+---
+# Response
+bool success
+string message

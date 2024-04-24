@@ -50,3 +50,8 @@ To use the `HILIN_Package`, run the package using the provided launch file:
 ```bash
 ros2 launch HILIN_Package hilin_launch.py
 ```
+
+```bash
+ros2 action send_goal --feedback move_feedback action_test/action/MoveFeedback "{command_type: 'move_abs',
+ position: 1000.0, velocity: 0.5, acceleration: 0.1, deceleration: 0.1}"
+```
